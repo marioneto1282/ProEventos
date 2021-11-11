@@ -5,3 +5,9 @@
 
 /* Importing Datepicker SCSS file. */
 @import "~ngx-bootstrap/datepicker/bs-datepicker";
+
+/*Importing FontAwesome SCSS file */
+@import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
+
+/* Importing toatr from SCSS file */
+@import '~ngx-toastr/toastr';
