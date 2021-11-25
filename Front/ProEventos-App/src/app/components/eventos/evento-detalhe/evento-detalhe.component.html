@@ -1,34 +1,88 @@
 <div class="card shadow  mb-5 bg-white rounded">
-  <form>
+  <form [formGroup]="form">
     <div class="p-3">
       <div class="form-row">
         <div class="form-group col-md-12">
           <label>Tema</label>
-          <input type="text" class="form-control" placeholder="Insira o Tema">
+          <input type="text" class="form-control"
+          [ngClass]="{ 'is-invalid' : f.tema.errors && f.tema.touched }"
+          formControlName="tema" placeholder="Insira o Tema">
+          <div *ngIf="f.tema.errors.required" class="invalid-feedback">
+            Tema é obrigatório.
+          </div>
+          <div *ngIf="f.tema.errors?.minlength" class="invalid-feedback">
+            Tema deve ter no mínimo 4 carcteres.
+          </div>
+          <div *ngIf="f.tema.errors?.maxlength" class="invalid-feedback">
+            Tema deve ter no máximo 50 caracteres.
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-8">
           <label>Local</label>
-          <input type="text" class="form-control" placeholder="Insira o Local">
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.local.errors && f.local.touched }"
+          formControlName="local" placeholder="Insira o Local">
+          <div *ngIf="f.local.errors.required" class="invalid-feedback">
+            Local é obrigatório.
+          </div>
         </div>
         <div class="form-group col-md-4">
           <label>Data e Hora</label>
-          <input type="datetime" class="form-control" placeholder="xx/xx/xxxx">
+          <input type="datetime" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.dataEvento.errors && f.dataEvento.touched }"
+          formControlName="dataEvento" placeholder="dd/MM/aaaa hh:mm">
+          <div *ngIf="f.dataEvento.errors.required" class="invalid-feedback">
+            Insira uma data.
+          </div>
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-2">
           <label>Qtd Pessoas</label>
-          <input type="text" class="form-control" placeholder="0">
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.qtdPessoas.errors && f.qtdPessoas.touched }"
+          formControlName="qtdPessoas" placeholder="0">
+          <div *ngIf="f.qtdPessoas.errors.required" class="invalid-feedback">
+            Quantidade de pessoas é obrigatória.
+          </div>
+          <div *ngIf="f.qtdPessoas.errors?.max" class="invalid-feedback">
+            Limite máximo é de ultrapassado.
+          </div>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Telefone</label>
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.telefone.errors && f.telefone.touched }"
+          formControlName="telefone" placeholder="(00) 00000-0000">
+          <div *ngIf="f.telefone.errors.required" class="invalid-feedback">
+            Insira número de telefone.
+          </div>
+          <div *ngIf="f.telefone.errors?.maxlength" class="invalid-feedback">
+            Número de telefone inválido.
+          </div>
         </div>
         <div class="form-group col-md-4">
-          <label>Telefone</label>
-          <input type="text" class="form-control" placeholder="(00) 00000-0000">
+          <label>E-mail</label>
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.email.errors && f.email.touched }"
+          formControlName="email" placeholder="Digite o e-mail">
+          <div *ngIf="f.email.errors.required" class="invalid-feedback">
+            Insira um endereço de email.
+          </div>
+          <div *ngIf="f.email.errors?.email" class="invalid-feedback">
+           Endereço de email inválido.
+          </div>
         </div>
-        <div class="form-group col-md-6">
-          <label>Email</label>
-          <input type="text" class="form-control" placeholder="e-mail">
+        <div class="form-group col-md-3">
+          <label>Imagem</label>
+          <input type="text" class="form-control is-invalid"
+          [ngClass]="{ 'is-invalid' : f.imagemURL.errors && f.imagemURL.touched }"
+          formControlName="imagemURL" placeholder="imagem">
+          <div *ngIf="f.imagemURL.errors.required" class="invalid-feedback">
+            Insira uma imagem.
+          </div>
         </div>
       </div>
     </div>
